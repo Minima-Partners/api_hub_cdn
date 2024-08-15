@@ -41,6 +41,7 @@
         const apiContainers = document.querySelectorAll('.api-container');
 
         apiContainers.forEach(container => {
+            console.log('setupEventHandlers');
             setupEventHandlers(container);
         });
     }
@@ -130,13 +131,14 @@
     }
 
     function handleGenerateButton(container, popupCode, overlay) {
+    console.log('handleGenerateButton');
     const endpoint = container.querySelector('.api-endpoint').textContent.trim().split(' ')[1];
     const { queryParams, bodyParams } = parseParams(container);
     const curlCommand = generateCurlCommand(endpoint, queryParams, bodyParams);
 
     // Set the curl command to the Shell tab content
     container.querySelector('.code-content-shell .code-content').textContent = curlCommand;
-
+    
     // Activate the Shell tab
     const tabButtons = container.querySelectorAll('.tab-button');
     const tabContents = container.querySelectorAll('.tab-content');
