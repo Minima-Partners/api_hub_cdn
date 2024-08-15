@@ -1,4 +1,20 @@
 function () {
+    console.log('start iframes detection');
+    const iframes = document.querySelectorAll('iframe');
+
+    // Display detected iframes
+    if (iframes.length > 0) {
+        console.log('Detected iframes:', iframes);
+        iframes.forEach((iframe, index) => {
+            const iframeInfo = `Iframe ${index + 1}: ${iframe.src || 'No src attribute'}`;
+            const infoElement = document.createElement('p');
+            infoElement.textContent = iframeInfo;
+            document.body.appendChild(infoElement); // Display iframe info on the page
+        });
+    } else {
+        console.log('No iframes detected.');
+    }
+
     function loadExternalScripts(scripts, callback) {
         let loadedScripts = 0;
         scripts.forEach(src => {
