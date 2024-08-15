@@ -1,4 +1,4 @@
-function () {
+(function() { // This is an immediately invoked function expression (IIFE)
     console.log('start iframes detection');
     const iframes = document.querySelectorAll('iframe');
 
@@ -294,4 +294,4 @@ function () {
         const blob = new Blob([content], { type: mimeType });
         saveAs(blob, fileName);
     }
-}
+})();
