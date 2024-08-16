@@ -1,4 +1,3 @@
-(function() { // This is an immediately invoked function expression (IIFE)
     console.log('start iframes detection');
     const iframes = document.querySelectorAll('iframe');
 
@@ -133,8 +132,12 @@
     function handleGenerateButton(container, popupCode, overlay) {
     console.log('handleGenerateButton');
     const endpoint = container.querySelector('.api-endpoint').textContent.trim().split(' ')[1];
+    console.log('endpoint ', endpoint);
     const { queryParams, bodyParams } = parseParams(container);
+    console.log('queryParams ', queryParams);
+
     const curlCommand = generateCurlCommand(endpoint, queryParams, bodyParams);
+    console.log('curlCommand ', curlCommand);
 
     // Set the curl command to the Shell tab content
     container.querySelector('.code-content-shell .code-content').textContent = curlCommand;
@@ -142,6 +145,9 @@
     // Activate the Shell tab
     const tabButtons = container.querySelectorAll('.tab-button');
     const tabContents = container.querySelectorAll('.tab-content');
+    
+    console.log('tabButtons ', tabButtons);
+    console.log('tabContents ', tabContents);
 
     // Remove 'active' class from all tabs and contents
     tabButtons.forEach(btn => btn.classList.remove('active'));
@@ -255,6 +261,7 @@
     }
 
     function showElement(...elements) {
+        console.log('show_elements ', tabContents);
         elements.forEach(element => element.classList.add('show_elements'));
     }
 
@@ -296,4 +303,3 @@
         const blob = new Blob([content], { type: mimeType });
         saveAs(blob, fileName);
     }
-})();
